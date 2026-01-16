@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <title>Bloxlink – Verifications</title>
+
+  <!-- FIX MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- BOTÃO MOBILE -->
   <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
 
 <div class="top-bar">
@@ -16,7 +21,7 @@
 
 <div class="layout">
 
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="logo">
       <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png" class="logo-img">
       <span class="text">bloxlink</span>
@@ -88,6 +93,9 @@
   </main>
 </div>
 
+<!-- OVERLAY SIDEBAR MOBILE -->
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
 <!-- POPUP BLOQUEADO -->
 <div id="blockedOverlay" class="popup-overlay">
   <div class="popup">
@@ -126,9 +134,13 @@ function closeIframe() {
   document.getElementById("popupIframe").src = "";
   document.getElementById("iframeOverlay").classList.remove("show");
 }
+
+/* FIX MOBILE SIDEBAR */
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("sidebarOverlay").classList.toggle("show");
+}
 </script>
 
 </body>
 </html>
-
-
