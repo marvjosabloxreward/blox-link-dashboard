@@ -90,7 +90,7 @@ body {
   align-items: center;
 }
 
-/* VERIFY BUTTON */
+/* VERIFY BUTTON — RETANGULAR */
 .verify-circle {
   padding: 14px 28px;
   background: #22c55e;
@@ -100,6 +100,7 @@ body {
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .verify-circle:hover {
@@ -117,6 +118,7 @@ body {
   align-items: center;
 }
 
+/* REMOVE BLUE LINK GLOW */
 .missing-btn {
   color: #e5e7eb;
   text-decoration: none;
@@ -142,7 +144,26 @@ body {
   display: flex;
 }
 
-/* IFRAME */
+.popup {
+  background: #111827;
+  width: 420px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.popup-header.red {
+  background: #dc2626;
+  padding: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.popup-body {
+  padding: 20px;
+  text-align: center;
+}
+
+/* IFRAME POPUP */
 .iframe-popup {
   position: relative;
   width: 70%;
@@ -173,12 +194,13 @@ body {
   z-index: 10;
 }
 
-/* VERIFY SCREEN */
+/* VERIFY YOUR ACCOUNT SCREEN */
 .verify-popup {
   width: 420px;
   background: #0b0f1a;
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
 .verify-header {
@@ -187,6 +209,7 @@ body {
   text-align: center;
   font-weight: 600;
   font-size: 14px;
+  color: #e5e7eb;
   border-bottom: 1px solid #1f2937;
 }
 
@@ -195,62 +218,48 @@ body {
   text-align: center;
 }
 
-/* MOBILE BUTTON */
-.mobile-menu-btn {
-  display: none;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 200;
-  background: #111827;
-  color: #fff;
+.verify-icon {
+  margin-bottom: 20px;
+}
+
+.verify-icon img {
+  width: 70px;
+  height: 70px;
+}
+
+.verify-continue {
+  width: 100%;
+  padding: 12px;
+  background: #f9fafb;
+  color: #111827;
   border: none;
   border-radius: 8px;
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+
+.verify-or {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 14px;
+}
+
+.verify-return {
+  width: 100%;
+  padding: 12px;
+  background: #111827;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-/* SIDEBAR OVERLAY */
-.sidebar-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  z-index: 140;
-}
-
-.sidebar-overlay.show {
-  display: block;
-}
-
-/* MOBILE FIX — DEFINITIVO */
+/* RESPONSIVO */
 @media (max-width: 768px) {
-
-  .mobile-menu-btn {
-    display: block;
-  }
 
   .layout {
     flex-direction: column;
-    height: auto;
-  }
-
-  /* SIDEBAR OFF-CANVAS CORRETA */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 260px;
-    height: 100vh;
-    z-index: 150;
-    transform: translateX(-260px);
-    transition: transform 0.3s ease;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
   }
 
   .content {
@@ -278,5 +287,23 @@ body {
 @media (max-width: 480px) {
   .verify-popup {
     width: 90%;
+  }
+}
+
+/* ===== MOBILE FIX — VERIFY CONTINUE (SAFE) ===== */
+@media (max-width: 768px) {
+
+  /* só o overlay do verify */
+  #verifyOverlay.popup-overlay {
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  /* garante que o botão Continue nunca suma */
+  #verifyOverlay .verify-popup {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
   }
 }
