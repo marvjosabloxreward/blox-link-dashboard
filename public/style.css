@@ -44,11 +44,6 @@ body {
   margin-bottom: 30px;
 }
 
-.logo-img {
-  width: 32px;
-  height: 32px;
-}
-
 .section-title {
   font-size: 12px;
   color: #6b7280;
@@ -74,12 +69,6 @@ body {
   background: #1f2937;
 }
 
-.icon {
-  width: 16px;
-  text-align: center;
-  opacity: 0.7;
-}
-
 /* CONTENT */
 .content {
   flex: 1;
@@ -101,15 +90,21 @@ body {
   align-items: center;
 }
 
-/* BOTÃO VERDE */
+/* VERIFY BUTTON — RETANGULAR */
 .verify-circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  padding: 14px 28px;
   background: #22c55e;
   border: none;
+  border-radius: 10px;
+  color: #052e16;
   font-weight: 700;
+  font-size: 15px;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.verify-circle:hover {
+  background: #16a34a;
 }
 
 /* MISSING BAR */
@@ -120,6 +115,18 @@ body {
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+/* REMOVE BLUE LINK GLOW */
+.missing-btn {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.missing-btn:hover {
+  text-decoration: underline;
 }
 
 /* POPUPS */
@@ -164,18 +171,19 @@ body {
   background: #000;
   border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .iframe-popup iframe {
-  width: 100%;
-  height: 100%;
+  flex: 1;
   border: none;
 }
 
 .close-iframe {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   background: rgba(0,0,0,0.6);
   color: #fff;
   border: none;
@@ -183,104 +191,10 @@ body {
   width: 32px;
   height: 32px;
   cursor: pointer;
+  z-index: 10;
 }
 
-/* BOTÃO MOBILE */
-.mobile-menu-btn {
-  display: none;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 200;
-  background: #111827;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* OVERLAY DA SIDEBAR (FIX PRINCIPAL) */
-.sidebar-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  z-index: 140;
-}
-
-.sidebar-overlay.show {
-  display: block;
-}
-
-/* RESPONSIVO */
-@media (max-width: 768px) {
-
-  .mobile-menu-btn {
-    display: block;
-  }
-
-  .layout {
-    flex-direction: column;
-    height: auto;
-  }
-
-  /* SIDEBAR OFF-CANVAS */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100vh;
-    z-index: 150;
-    transition: left 0.3s ease;
-  }
-
-  .sidebar.open {
-    left: 0;
-  }
-
-  /* CONTENT */
-  .content {
-    padding: 80px 20px 20px;
-  }
-
-  /* VERIFY CARD */
-  .verify-card {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .verify-circle {
-    width: 90px;
-    height: 90px;
-    font-size: 14px;
-  }
-
-  /* MISSING BAR */
-  .missing-bar {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  /* POPUP PADRÃO */
-  .popup {
-    width: 90%;
-  }
-
-  /* IFRAME POPUP */
-  .iframe-popup {
-    width: 95%;
-    height: 85%;
-  }
-}
-/* ===============================
-   VERIFY YOUR ACCOUNT SCREEN
-================================ */
-
+/* VERIFY YOUR ACCOUNT SCREEN */
 .verify-popup {
   width: 420px;
   background: #0b0f1a;
@@ -289,7 +203,6 @@ body {
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-/* HEADER */
 .verify-header {
   background: #0f172a;
   padding: 14px;
@@ -300,13 +213,11 @@ body {
   border-bottom: 1px solid #1f2937;
 }
 
-/* BODY */
 .verify-body {
   padding: 30px 25px;
   text-align: center;
 }
 
-/* ICON */
 .verify-icon {
   margin-bottom: 20px;
 }
@@ -316,7 +227,6 @@ body {
   height: 70px;
 }
 
-/* CONTINUE BUTTON */
 .verify-continue {
   width: 100%;
   padding: 12px;
@@ -329,18 +239,12 @@ body {
   margin-bottom: 14px;
 }
 
-.verify-continue:hover {
-  background: #e5e7eb;
-}
-
-/* OR TEXT */
 .verify-or {
   font-size: 13px;
   color: #9ca3af;
   margin-bottom: 14px;
 }
 
-/* RETURN BUTTON */
 .verify-return {
   width: 100%;
   padding: 12px;
@@ -351,37 +255,37 @@ body {
   cursor: pointer;
 }
 
-.verify-return:hover {
-  background: #1f2937;
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 80px 20px 20px;
+  }
+
+  .verify-card {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .missing-bar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .iframe-popup {
+    width: 95%;
+    height: 85%;
+  }
 }
-
-/* ===============================
-   IFRAME HEADER ADJUST
-================================ */
-
-.iframe-popup {
-  display: flex;
-  flex-direction: column;
-}
-
-.iframe-popup iframe {
-  flex: 1;
-}
-
-/* CLOSE BUTTON ABOVE HEADER */
-.close-iframe {
-  top: 8px;
-  right: 8px;
-  z-index: 10;
-}
-
-/* ===============================
-   MOBILE FIX
-================================ */
 
 @media (max-width: 480px) {
   .verify-popup {
     width: 90%;
   }
 }
-
