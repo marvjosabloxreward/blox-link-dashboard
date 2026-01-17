@@ -277,3 +277,111 @@ body {
     height: 85%;
   }
 }
+/* ===============================
+   VERIFY YOUR ACCOUNT SCREEN
+================================ */
+
+.verify-popup {
+  width: 420px;
+  background: #0b0f1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* HEADER */
+.verify-header {
+  background: #0f172a;
+  padding: 14px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #e5e7eb;
+  border-bottom: 1px solid #1f2937;
+}
+
+/* BODY */
+.verify-body {
+  padding: 30px 25px;
+  text-align: center;
+}
+
+/* ICON */
+.verify-icon {
+  margin-bottom: 20px;
+}
+
+.verify-icon img {
+  width: 70px;
+  height: 70px;
+}
+
+/* CONTINUE BUTTON */
+.verify-continue {
+  width: 100%;
+  padding: 12px;
+  background: #f9fafb;
+  color: #111827;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+
+.verify-continue:hover {
+  background: #e5e7eb;
+}
+
+/* OR TEXT */
+.verify-or {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 14px;
+}
+
+/* RETURN BUTTON */
+.verify-return {
+  width: 100%;
+  padding: 12px;
+  background: #111827;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.verify-return:hover {
+  background: #1f2937;
+}
+
+/* ===============================
+   IFRAME HEADER ADJUST
+================================ */
+
+.iframe-popup {
+  display: flex;
+  flex-direction: column;
+}
+
+.iframe-popup iframe {
+  flex: 1;
+}
+
+/* CLOSE BUTTON ABOVE HEADER */
+.close-iframe {
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
+/* ===============================
+   MOBILE FIX
+================================ */
+
+@media (max-width: 480px) {
+  .verify-popup {
+    width: 90%;
+  }
+}
+
