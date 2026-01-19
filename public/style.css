@@ -128,24 +128,29 @@ body {
   text-decoration: underline;
 }
 
-/* ================= POPUPS ================= */
+/* ================= POPUPS (FIX DEFINITIVO) ================= */
 .popup-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
-  display: none;
+
+  display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 100;
 
-  /* fade base */
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
   transition: opacity 0.25s ease;
 }
 
 .popup-overlay.show {
-  display: flex;
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* ================= FADE CONTENT ================= */
