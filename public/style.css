@@ -90,7 +90,7 @@ body {
   align-items: center;
 }
 
-/* VERIFY BUTTON — RETANGULAR */
+/* VERIFY BUTTON */
 .verify-circle {
   padding: 14px 28px;
   background: #22c55e;
@@ -118,7 +118,6 @@ body {
   align-items: center;
 }
 
-/* REMOVE BLUE LINK GLOW */
 .missing-btn {
   color: #e5e7eb;
   text-decoration: none;
@@ -129,7 +128,7 @@ body {
   text-decoration: underline;
 }
 
-/* POPUPS */
+/* ================= POPUPS ================= */
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -138,12 +137,32 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 100;
+
+  /* fade base */
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .popup-overlay.show {
   display: flex;
+  opacity: 1;
 }
 
+/* ================= FADE CONTENT ================= */
+.verify-popup,
+.iframe-popup {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.popup-overlay.show .verify-popup,
+.popup-overlay.show .iframe-popup {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* BLOCKED POPUP */
 .popup {
   background: #111827;
   width: 420px;
@@ -194,7 +213,7 @@ body {
   z-index: 10;
 }
 
-/* VERIFY YOUR ACCOUNT SCREEN */
+/* VERIFY YOUR ACCOUNT */
 .verify-popup {
   width: 420px;
   background: #0b0f1a;
@@ -257,7 +276,6 @@ body {
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
-
   .layout {
     flex-direction: column;
   }
@@ -290,10 +308,8 @@ body {
   }
 }
 
-/* ===== MOBILE FIX — VERIFY CONTINUE (SAFE) ===== */
+/* MOBILE FIX — VERIFY */
 @media (max-width: 768px) {
-
-  /* só o overlay do verify */
   #verifyOverlay.popup-overlay {
     align-items: flex-start;
     justify-content: center;
@@ -301,16 +317,13 @@ body {
     padding-bottom: 40px;
   }
 
-  /* garante que o botão Continue nunca suma */
   #verifyOverlay .verify-popup {
     max-height: calc(100vh - 120px);
     overflow-y: auto;
   }
 }
 
-/* ===== MOBILE SIDEBAR FIX (HTML COMPATÍVEL) ===== */
-
-/* botão hamburguer */
+/* MOBILE SIDEBAR */
 .mobile-menu-btn {
   display: none;
   position: fixed;
@@ -326,7 +339,6 @@ body {
   cursor: pointer;
 }
 
-/* overlay da sidebar */
 .sidebar-overlay {
   position: fixed;
   inset: 0;
@@ -339,15 +351,9 @@ body {
   display: block;
 }
 
-/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-
   .mobile-menu-btn {
     display: block;
-  }
-
-  .layout {
-    flex-direction: column;
   }
 
   .sidebar {
