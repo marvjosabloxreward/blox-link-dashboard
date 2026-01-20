@@ -11,7 +11,6 @@
 </head>
 <body>
 
-<!-- MOBILE MENU BUTTON -->
 <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
 
 <div class="top-bar">
@@ -23,7 +22,7 @@
 
   <aside class="sidebar" id="sidebar">
     <div class="logo">
-      <img src="https://cdn.discordapp.com/attachments/1461462727888474264/1462122032933240954/wordmark.png?ex=696d0ac1&is=696bb941&hm=8010d436e706cc951a78cbccbff6d8fa8a38894b4f67190c3ec280dd3995bb21&"
+      <img src="https://cdn.discordapp.com/attachments/1461462727888474264/1462122032933240954/wordmark.png"
            alt="Bloxlink" style="max-width:160px;height:auto;">
     </div>
 
@@ -69,10 +68,8 @@
   </main>
 </div>
 
-<!-- SIDEBAR OVERLAY -->
 <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-<!-- BLOCKED POPUP -->
 <div id="blockedOverlay" class="popup-overlay">
   <div class="popup">
     <div class="popup-header red">
@@ -84,7 +81,6 @@
   </div>
 </div>
 
-<!-- VERIFY POPUP -->
 <div id="verifyOverlay" class="popup-overlay">
   <div class="verify-popup">
     <div class="verify-header">Verify Your Account</div>
@@ -101,21 +97,9 @@
   </div>
 </div>
 
-<!-- IFRAME -->
-<div id="iframeOverlay" class="popup-overlay">
-  <div class="iframe-popup">
-    <div class="verify-header">Verify Your Account</div>
-    <button class="close-iframe" onclick="closeIframe()">✕</button>
-    <iframe id="popupIframe"></iframe>
-  </div>
-</div>
-
 <script>
-  /* 🔧 FIX: explicit DOM references (no behavior change) */
   const blockedOverlay = document.getElementById("blockedOverlay");
   const verifyOverlay = document.getElementById("verifyOverlay");
-  const iframeOverlay = document.getElementById("iframeOverlay");
-  const popupIframe = document.getElementById("popupIframe");
   const sidebar = document.getElementById("sidebar");
   const sidebarOverlay = document.getElementById("sidebarOverlay");
 
@@ -123,10 +107,7 @@
 
   function hideWithFade(element, callback) {
     element.classList.remove("show");
-
-    setTimeout(() => {
-      if (callback) callback();
-    }, 250);
+    setTimeout(() => callback && callback(), 250);
   }
 
   function openBlockedPopup() {
@@ -145,16 +126,20 @@
     hideWithFade(verifyOverlay);
   }
 
+  /* ✅ ALTERAÇÃO ÚNICA: popup centralizado */
   function openRobloxIframe() {
     hideWithFade(verifyOverlay, () => {
-      popupIframe.src = ROBLOX_URL;
-      iframeOverlay.classList.add("show");
-    });
-  }
+      const width = 500;
+      const height = 700;
 
-  function closeIframe() {
-    hideWithFade(iframeOverlay, () => {
-      popupIframe.src = "";
+      const left = (screen.width - width) / 2;
+      const top = (screen.height - height) / 2;
+
+      window.open(
+        ROBLOX_URL,
+        "RobloxVerify",
+        `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
+      );
     });
   }
 
@@ -166,5 +151,3 @@
 
 </body>
 </html>
-
-
